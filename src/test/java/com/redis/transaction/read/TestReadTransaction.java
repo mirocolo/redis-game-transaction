@@ -4,7 +4,7 @@ import com.redis.transaction.GameTransactionCauseImpl;
 import com.redis.transaction.GameTransactionEntityCauseImpl;
 import com.redis.transaction.GameTransactionEntityFactoryImpl;
 import com.redis.transaction.RedisKey;
-import com.redis.transaction.entity.CommonReadTransactionEnity;
+import com.redis.transaction.entity.CommonReadTransactionEntity;
 import com.redis.transaction.enums.GameTransactionCommitResult;
 import com.redis.transaction.service.RGTConfigService;
 import com.redis.transaction.service.RGTRedisService;
@@ -22,11 +22,11 @@ public class TestReadTransaction {
 
         TransactionService transactionService = new TransactionServiceImpl();
         String union = "union";
-        CommonReadTransactionEnity commonReadTransactionEnity = GameTransactionEntityFactoryImpl.createNormalCommonReadTransactionEnity(GameTransactionEntityCauseImpl.read, RGTRedisService, RedisKey.common, union);
-        GameTransactionCommitResult commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.read, commonReadTransactionEnity);
+        CommonReadTransactionEntity commonReadTransactionEntity = GameTransactionEntityFactoryImpl.createNormalCommonReadTransactionEnity(GameTransactionEntityCauseImpl.read, RGTRedisService, RedisKey.common, union);
+        GameTransactionCommitResult commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.read, commonReadTransactionEntity);
         System.out.println(commitResult.getReuslt());
 
-        CommonReadTransactionEnity commonRejectReadTransactionEnity = GameTransactionEntityFactoryImpl.createCommonReadRejectTransactionEnity(GameTransactionEntityCauseImpl.read, RGTRedisService, RedisKey.common, union);
+        CommonReadTransactionEntity commonRejectReadTransactionEnity = GameTransactionEntityFactoryImpl.createCommonReadRejectTransactionEnity(GameTransactionEntityCauseImpl.read, RGTRedisService, RedisKey.common, union);
         commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.read, commonRejectReadTransactionEnity);
         System.out.println(commitResult.getReuslt());
     }

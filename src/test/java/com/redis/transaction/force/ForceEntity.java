@@ -27,7 +27,7 @@ public class ForceEntity extends AbstractGameTransactionEntity {
     }
 
     @Override
-    public GameTransactionCommitResult trycommit() throws GameTransactionException {
+    public GameTransactionCommitResult tryCommit() throws GameTransactionException {
         return GameTransactionCommitResult.SUCCESS;
     }
 }

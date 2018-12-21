@@ -1,24 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
-       xmlns:p="http://www.springframework.org/schema/p"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd  
-http://www.springframework.org/schema/cache  
-http://www.springframework.org/schema/cache/spring-cache.xsd"
+http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-destroy-method="close" default-lazy-init="false">
-    <bean name="genericObjectPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
-        <property name="maxWaitMillis" value="-1" />
-        <property name="maxTotal" value="8" />
-        <property name="minIdle" value="0" />
-        <property name="maxIdle" value="8" />
+    <bean name="genericObjectPoolConfig"
+          class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+        <property name="maxWaitMillis" value="-1"/>
+        <property name="maxTotal" value="8"/>
+        <property name="minIdle" value="0"/>
+        <property name="maxIdle" value="8"/>
     </bean>
 
     <bean id="jedisCluster" class="com.redis.transaction.service.cluster.JedisClusterFactory">
-        <property name="connectionTimeout" value="3000" />
-        <property name="soTimeout" value="3000" />
-        <property name="maxRedirections" value="5" />
-        <property name="genericObjectPoolConfig" ref="genericObjectPoolConfig" />
+        <property name="connectionTimeout" value="3000"/>
+        <property name="soTimeout" value="3000"/>
+        <property name="maxRedirections" value="5"/>
+        <property name="genericObjectPoolConfig" ref="genericObjectPoolConfig"/>
         <property name="jedisClusterNodes">
             <set>
                 <value>192.168.0.240:7000</value>
@@ -32,6 +30,6 @@ http://www.springframework.org/schema/cache/spring-cache.xsd"
     </bean>
 
     <bean id="RGTRedisClusterService" class="com.redis.transaction.service.RGTRedisClusterService">
-        <property name="jedisCluster" ref="jedisCluster" />
+        <property name="jedisCluster" ref="jedisCluster"/>
     </bean>
 </beans>

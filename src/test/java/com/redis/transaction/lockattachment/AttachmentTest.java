@@ -4,7 +4,7 @@ import com.redis.transaction.GameTransactionCauseImpl;
 import com.redis.transaction.GameTransactionEntityCauseImpl;
 import com.redis.transaction.GameTransactionEntityFactoryImpl;
 import com.redis.transaction.RedisKey;
-import com.redis.transaction.entity.CommonReadTransactionEnity;
+import com.redis.transaction.entity.CommonReadTransactionEntity;
 import com.redis.transaction.entity.TestMutexEntity;
 import com.redis.transaction.enums.GameTransactionCommitResult;
 import com.redis.transaction.service.RGTConfigService;
@@ -31,9 +31,9 @@ public class AttachmentTest {
         GameTransactionCommitResult commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.attchment, testMutexEntity);
         System.out.println(commitResult.getReuslt());
 
-        CommonReadTransactionEnity commonReadTransactionEnity = GameTransactionEntityFactoryImpl.createNormalCommonReadTransactionEnity(GameTransactionEntityCauseImpl.attchment, RGTRedisService, RedisKey.player, union);
-        commonReadTransactionEnity.getGameTransactionLockInterface().setContent(attchMent);
-        commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.read, commonReadTransactionEnity);
+        CommonReadTransactionEntity commonReadTransactionEntity = GameTransactionEntityFactoryImpl.createNormalCommonReadTransactionEnity(GameTransactionEntityCauseImpl.attchment, RGTRedisService, RedisKey.player, union);
+        commonReadTransactionEntity.getGameTransactionLockInterface().setContent(attchMent);
+        commitResult = transactionService.commitTransaction(GameTransactionCauseImpl.read, commonReadTransactionEntity);
         System.out.println(commitResult.getReuslt());
     }
 }

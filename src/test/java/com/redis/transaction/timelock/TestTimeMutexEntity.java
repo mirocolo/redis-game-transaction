@@ -32,7 +32,7 @@ public class TestTimeMutexEntity extends AbstractGameTransactionEntity {
     }
 
     @Override
-    public GameTransactionCommitResult trycommit() throws GameTransactionException {
+    public GameTransactionCommitResult tryCommit() throws GameTransactionException {
 //        String testRedisKey =  "testRedis";
 //        if(redisService.getString(testRedisKey).equals("1000")){
 //            return GameTransactionCommitResult.COMMON_ERROR;
